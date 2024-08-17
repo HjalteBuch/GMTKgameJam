@@ -37,7 +37,7 @@ public class Status : MonoBehaviour
         
     }
 
-    void statusUpdate() {
+    void statusUpdate() { 
         hunger--;
         thirst--;
         if (hunger == 0 || thirst == 0) {Die();}
