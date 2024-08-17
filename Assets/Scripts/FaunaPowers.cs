@@ -14,11 +14,17 @@ public class FaunaPowers : MonoBehaviour
     private float baseSpeed;
     private float moveCounter;
 
+    private Vector3Int goal;
+
     // Start is called before the first frame update
     void Awake()
     {
         mapManager = FindObjectOfType<MapManager>();
         moveCounter = moveTime;
+    }
+
+    void Start() {
+        goal = Goal();
     }
 
     // Update is called once per frame
@@ -28,21 +34,20 @@ public class FaunaPowers : MonoBehaviour
 
         if(moveCounter <= 0) {
             moveCounter = moveTime;
-            float newRotation = Random.Range(0f, 360f);
-            transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
-
-            LookForFood();
+            goal = Goal();
         }
-
-        float adjustSpeed = mapManager.GetTileData(transform.position).movementSpeed * baseSpeed;
-        transform.position += transform.up * Time.deltaTime * adjustSpeed;
+        transform.position = Vector3.MoveTowards(transform.position, (Vector3)goal, baseSpeed * Time.deltaTime);
     }
 
-    private void LookForFood(){
-        var foodPos = mapManager.GetPositionOfHerbivoreFood(visionRange, transform.position);
-        if (foodPos == null) {
-            return;
-        }
-        // Move the animal towards the foodPos
+    private Vector3Int Goal(){
+        Vector3Int? foodPos = mapManager.GetPositionOfHerbivoreFood(visionRange, transform.position);
+
+        return foodPos ?? RandomGoal();
     }
+
+    private Vector3Int RandomGoal () {
+        var v = mapManager.GetCurrentTilePosition(transform.position);
+        return new Vector3Int(Random.Range(v.x-visionRange, v.y-visionRange), Random.Range(v.x+visionRange, v.y+visionRange), 0);
+    }
+
 }

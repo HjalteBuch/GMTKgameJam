@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class MapManager : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap map;
+    public Tilemap map;
 
     [SerializeField]
     private List<TileData> tileDatas;
@@ -34,6 +34,10 @@ public class MapManager : MonoBehaviour
 
             float movementspeed = dataFromTiles[clickedTile].movementSpeed;
         }
+    }
+
+    public Vector3Int GetCurrentTilePosition(Vector3 worldPosition) {
+        return map.WorldToCell(worldPosition);
     }
 
     public TileData GetTileData(Vector2 worldPosition) {
