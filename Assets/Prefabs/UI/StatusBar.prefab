@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4581101689720034759}
   - component: {fileID: 3622897193011963253}
+  - component: {fileID: 3168479022175635440}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -90,6 +91,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3168479022175635440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672347821042196496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf6773f16e65cd4dad26bf913e7ceba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 3622897193011963253}
 --- !u!1 &2021323142221114194
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4108576525930448238}
   - component: {fileID: 5203407359766501966}
+  - component: {fileID: 275735717625789136}
   m_Layer: 5
   m_Name: HungerBar
   m_TagString: Untagged
@@ -648,6 +663,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &275735717625789136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255984451360034611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf6773f16e65cd4dad26bf913e7ceba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 5203407359766501966}
 --- !u!1 &5707538307476723007
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546786315110408267}
   - component: {fileID: 3583271663596573170}
+  - component: {fileID: 4025878639168916299}
   m_Layer: 5
   m_Name: ThirstBar
   m_TagString: Untagged
@@ -738,6 +767,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4025878639168916299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707538307476723007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf6773f16e65cd4dad26bf913e7ceba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 3583271663596573170}
 --- !u!1 &6437036375087702155
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370802123936429842}
   - component: {fileID: 5455815013865331377}
+  - component: {fileID: 4269538498016202865}
   m_Layer: 5
   m_Name: StaminaBar
   m_TagString: Untagged
@@ -912,6 +955,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4269538498016202865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255327926754785000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf6773f16e65cd4dad26bf913e7ceba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 5455815013865331377}
 --- !u!1 &7820294472542643410
 GameObject:
   m_ObjectHideFlags: 0
