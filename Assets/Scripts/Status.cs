@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Status : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Status : MonoBehaviour
     private int hunger;
     private int thirst;
     
+    private Slider healthBar;
+    private Slider staminaBar;
+    private Slider thirstBar;
+    private Slider hungerBar;
 
     void Start()
     {
@@ -25,7 +30,14 @@ public class Status : MonoBehaviour
         hunger = maxHunger;
         thirst = maxThirst;
 
+        healthBar = gameobject.GetComponentInChildren<Transform>().Find("healthBar").GetComponent<Slider>();
+        staminaBar = gameobject.GetComponentInChildren<Transform>().Find("staminaBar").GetComponent<Slider>();
+        thirstBar = gameobject.GetComponentInChildren<Transform>().Find("thirstBar").GetComponent<Slider>();
+        hungerBar = gameobject.GetComponentInChildren<Transform>().Find("hungerBar").GetComponent<Slider>();
+
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
+
+        
     }
 
     void statusUpdate() {
