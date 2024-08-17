@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaunaPowers : MonoBehaviour
 {
-    [SerializeField] int visionRange = 100;
+    [SerializeField] int visionRange = 10;
 
     private MapManager mapManager;
 
@@ -30,6 +30,8 @@ public class FaunaPowers : MonoBehaviour
             moveCounter = moveTime;
             float newRotation = Random.Range(0f, 360f);
             transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+
+            IsFoodNearby();
         }
 
         float adjustSpeed = mapManager.GetTileData(transform.position).movementSpeed * baseSpeed;
@@ -37,6 +39,11 @@ public class FaunaPowers : MonoBehaviour
     }
 
     private bool IsFoodNearby(){
+        List<TileData> tiles = mapManager.GetAllTileDataInRangeFromPosition(visionRange, transform.position);
+        print(true);
+        foreach (TileData data in tiles) {
+            print(data.herbivoreFood);
+        }
         return false;
     }
 }
