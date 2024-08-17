@@ -30,10 +30,10 @@ public class Status : MonoBehaviour
         hunger = maxHunger;
         thirst = maxThirst;
 
-        healthBar = gameobject.GetComponentInChildren<Transform>().Find("healthBar").GetComponent<Slider>();
-        staminaBar = gameobject.GetComponentInChildren<Transform>().Find("staminaBar").GetComponent<Slider>();
-        thirstBar = gameobject.GetComponentInChildren<Transform>().Find("thirstBar").GetComponent<Slider>();
-        hungerBar = gameobject.GetComponentInChildren<Transform>().Find("hungerBar").GetComponent<Slider>();
+        healthBar = this.GetComponentInChildren<Transform>().Find("healthBar").GetComponent<Slider>();
+        staminaBar = this.GetComponentInChildren<Transform>().Find("staminaBar").GetComponent<Slider>();
+        thirstBar = this.GetComponentInChildren<Transform>().Find("thirstBar").GetComponent<Slider>();
+        hungerBar = this.GetComponentInChildren<Transform>().Find("hungerBar").GetComponent<Slider>();
 
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
 
