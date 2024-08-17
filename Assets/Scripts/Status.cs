@@ -10,6 +10,7 @@ public class Status : MonoBehaviour
     [SerializeField] int maxStamina = 100;
     [SerializeField] int maxHunger = 100;
     [SerializeField] int maxThirst = 100;
+    [SerializeField] int visionRange = 100;
     [SerializeField] int runSpeed = 20;
     [SerializeField] int walkSpeed = 10;
 
@@ -38,7 +39,7 @@ public class Status : MonoBehaviour
 
     void Die()
     {
-        
+        animate.SetTrigger("dying");
     }
 
     void Update()
