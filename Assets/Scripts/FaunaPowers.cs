@@ -31,19 +31,18 @@ public class FaunaPowers : MonoBehaviour
             float newRotation = Random.Range(0f, 360f);
             transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
 
-            IsFoodNearby();
+            LookForFood();
         }
 
         float adjustSpeed = mapManager.GetTileData(transform.position).movementSpeed * baseSpeed;
         transform.position += transform.up * Time.deltaTime * adjustSpeed;
     }
 
-    private bool IsFoodNearby(){
-        List<TileData> tiles = mapManager.GetAllTileDataInRangeFromPosition(visionRange, transform.position);
-        print(true);
-        foreach (TileData data in tiles) {
-            print(data.herbivoreFood);
+    private void LookForFood(){
+        var foodPos = mapManager.GetPositionOfFood(visionRange, transform.position);
+        if (foodPos == null) {
+            return;
         }
-        return false;
+        // Move the animal towards the foodPos
     }
 }
