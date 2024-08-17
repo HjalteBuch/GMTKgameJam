@@ -39,7 +39,7 @@ public class FaunaPowers : MonoBehaviour
     }
 
     private void LookForFood(){
-        var foodPos = mapManager.GetPositionOfFood(visionRange, transform.position);
+        var foodPos = mapManager.GetPositionOfHerbivoreFood(visionRange, transform.position);
         if (foodPos == null) {
             return;
         }

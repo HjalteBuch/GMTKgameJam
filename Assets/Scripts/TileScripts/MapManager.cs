@@ -43,7 +43,7 @@ public class MapManager : MonoBehaviour
         return dataFromTiles[tile];
     }
 
-    public Vector3Int? GetPositionOfFood(int range, Vector2 worldPosition) {
+    public Vector3Int? GetPositionOfHerbivoreFood(int range, Vector2 worldPosition) {
         Vector3Int gridPosition = map.WorldToCell(worldPosition);
         BoundsInt area = new BoundsInt(gridPosition.x-range, gridPosition.y-range, 0, range, range, 1);
         foreach (var point in area.allPositionsWithin) {
