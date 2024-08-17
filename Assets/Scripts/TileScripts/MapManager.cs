@@ -37,4 +37,11 @@ public class MapManager : MonoBehaviour
             print(movementspeed);
         }
     }
+
+    public TileData GetTileData(Vector2 worldPosition) {
+        Vector3Int gridPosition = map.WorldToCell(worldPosition);
+        TileBase tile = map.GetTile(gridPosition);
+
+        return dataFromTiles[tile];
+    }
 }
