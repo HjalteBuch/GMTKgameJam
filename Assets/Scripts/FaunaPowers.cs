@@ -14,7 +14,7 @@ public class FaunaPowers : MonoBehaviour
     private float baseSpeed;
     private float moveCounter;
 
-    private Vector3Int? goal;
+    private Vector3Int goal;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,32 +23,31 @@ public class FaunaPowers : MonoBehaviour
         moveCounter = moveTime;
     }
 
+    void Start() {
+        goal = Goal();
+    }
+
     // Update is called once per frame
     void Update()
     {
         moveCounter -= Time.deltaTime;
 
         if(moveCounter <= 0) {
-            SetGoal();
             moveCounter = moveTime;
-            float newRotation = Random.Range(0f, 360f);
-            transform.rotation = Quaternion.Euler(0f, 0f, newRotation);
-
+            goal = Goal();
         }
-
-        float adjustSpeed = mapManager.GetTileData(transform.position).movementSpeed * baseSpeed;
-        transform.position += transform.up * Time.deltaTime * adjustSpeed;
+        transform.position = Vector3.MoveTowards(transform.position, (Vector3)goal, baseSpeed * Time.deltaTime);
     }
 
-    private void SetGoal(){
+    private Vector3Int Goal(){
         Vector3Int? foodPos = mapManager.GetPositionOfHerbivoreFood(visionRange, transform.position);
-        if (foodPos == null) {
-            var rand = Random.Range(-visionRange, visionRange);
-            var newPos = Vector3.Lerp(transform.position, rand, Time.deltaTime * baseSpeed);
-            return;
-        }
-        goal = foodPos;
-        // Move the animal towards the foodPos
+
+        return foodPos ?? RandomGoal();
+    }
+
+    private Vector3Int RandomGoal () {
+        var v = mapManager.GetCurrentTilePosition(transform.position);
+        return new Vector3Int(Random.Range(v.x-visionRange, v.y-visionRange), Random.Range(v.x+visionRange, v.y+visionRange), 0);
     }
 
 }
