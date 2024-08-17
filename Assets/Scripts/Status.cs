@@ -8,11 +8,15 @@ public class Status : MonoBehaviour
     [SerializeField] int maxStamina = 100;
     [SerializeField] int maxHunger = 100;
     [SerializeField] int maxThirst = 100;
+    [SerializeField] int visionRange = 100;
+    [SerializeField] int runSpeed = 20;
+    [SerializeField] int walkSpeed = 10;
 
     private int health;
     private int stamina;
     private int hunger;
     private int thirst;
+    
 
     void Start()
     {
@@ -20,6 +24,7 @@ public class Status : MonoBehaviour
         stamina = maxStamina;
         hunger = maxHunger;
         thirst = maxThirst;
+
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
     }
 
