@@ -30,11 +30,6 @@ public class Status : MonoBehaviour
         hunger = maxHunger;
         thirst = maxThirst;
 
-        healthBar = this.GetComponentInChildren<Transform>().Find("healthBar").GetComponent<Slider>();
-        staminaBar = this.GetComponentInChildren<Transform>().Find("staminaBar").GetComponent<Slider>();
-        thirstBar = this.GetComponentInChildren<Transform>().Find("thirstBar").GetComponent<Slider>();
-        hungerBar = this.GetComponentInChildren<Transform>().Find("hungerBar").GetComponent<Slider>();
-
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
 
         
