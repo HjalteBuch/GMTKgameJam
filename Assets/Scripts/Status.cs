@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,28 +19,21 @@ public class Status : MonoBehaviour
     private int hunger;
     private int thirst;
     
-    private Slider healthBar;
-    private Slider staminaBar;
-    private Slider thirstBar;
-    private Slider hungerBar;
-    private Animator animate;
+    public StatusBarBlock StatusBarBlock;
 
     void Start()
     {
-        animate = GetComponentInChildren<Animator>();
-        health = maxHealth;
-        stamina = maxStamina;
-        hunger = maxHunger;
-        thirst = maxThirst;
+        StatusBarBlock.healthBar.SetMaxValue(maxHealth);
+        StatusBarBlock.staminaBar.SetMaxValue(maxStamina);
+        StatusBarBlock.thirstBar.SetMaxValue(maxThirst);
+        StatusBarBlock.hungerBar.SetMaxValue(maxHunger);
 
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
-
-        
     }
 
     void statusUpdate() {
-        hunger--;
-        thirst--;
+        StatusBarBlock.UpdateNeeds();
+        print($"\tCurrent hunger:\t{StatusBarBlock.hungerBar.GetValue()}\n\t\tCurrent thirst:\t{StatusBarBlock.thirstBar.GetValue()}");
         if (hunger == 0 || thirst == 0) {Die();}
     }
 
