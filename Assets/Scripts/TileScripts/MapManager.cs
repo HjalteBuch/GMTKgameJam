@@ -43,18 +43,14 @@ public class MapManager : MonoBehaviour
         return dataFromTiles[tile];
     }
 
-    public List<TileData> GetAllTileDataInRangeFromPosition(int range, Vector2 worldPosition) {
+    public Vector3Int? GetPositionOfFood(int range, Vector2 worldPosition) {
         Vector3Int gridPosition = map.WorldToCell(worldPosition);
         BoundsInt area = new BoundsInt(gridPosition.x-range, gridPosition.y-range, 0, range, range, 1);
-        print("Area: " + area.ToString() + ", Position: " + gridPosition);
-        TileBase[] tileArray = map.GetTilesBlock(area);
-
-        List<TileData> tileDatas = new List<TileData>();
-
-        foreach (TileBase tile in tileArray) {
-            tileDatas.Add(dataFromTiles[tile]);
+        foreach (var point in area.allPositionsWithin) {
+            if (dataFromTiles[map.GetTile(point)].herbivoreFood) {
+                return point;
+            }
         }
-
-        return tileDatas;
+        return null;
     }
 }
