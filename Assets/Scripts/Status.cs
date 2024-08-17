@@ -22,9 +22,11 @@ public class Status : MonoBehaviour
     private Slider staminaBar;
     private Slider thirstBar;
     private Slider hungerBar;
+    private Animator animate;
 
     void Start()
     {
+        animate = GetComponentInChildren<Animator>();
         health = maxHealth;
         stamina = maxStamina;
         hunger = maxHunger;
@@ -43,7 +45,7 @@ public class Status : MonoBehaviour
 
     void Die()
     {
-        
+        animate.SetTrigger("dying");
     }
 
     void Update()
