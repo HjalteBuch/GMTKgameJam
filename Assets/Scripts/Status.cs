@@ -16,13 +16,14 @@ public class Status : MonoBehaviour
 
     private int health;
     private int stamina;
-    private int hunger;
-    private int thirst;
+
+    private Animator animate;
     
     public StatusBarBlock StatusBarBlock;
 
     void Start()
     {
+        animate = GetComponentInChildren<Animator>();
         StatusBarBlock.healthBar.SetMaxValue(maxHealth);
         StatusBarBlock.staminaBar.SetMaxValue(maxStamina);
         StatusBarBlock.thirstBar.SetMaxValue(maxThirst);
@@ -31,16 +32,10 @@ public class Status : MonoBehaviour
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
     }
 
-<<<<<<< HEAD
-    void statusUpdate() { 
-        hunger--;
-        thirst--;
-=======
     void statusUpdate() {
         StatusBarBlock.UpdateNeeds();
         print($"\tCurrent hunger:\t{StatusBarBlock.hungerBar.GetValue()}\n\t\tCurrent thirst:\t{StatusBarBlock.thirstBar.GetValue()}");
->>>>>>> fe91fbb01a9b3506ec8e7b4b569022ed783a1a68
-        if (hunger == 0 || thirst == 0) {Die();}
+        if (StatusBarBlock.hungerBar.GetValue() == 0 || StatusBarBlock.thirstBar.GetValue() == 0) {Die();}
     }
 
     void Die()
