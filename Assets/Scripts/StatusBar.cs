@@ -15,4 +15,8 @@ public class StatusBar : MonoBehaviour
     public void SetValue(int value){
         slider.value = value;
     }
+
+    public int GetValue(){
+        return (int)slider.value;
+    }
 }

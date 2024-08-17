@@ -1316,6 +1316,7 @@ GameObject:
   - component: {fileID: 3443435600183228745}
   - component: {fileID: 4224435543646558090}
   - component: {fileID: 5795896759964373648}
+  - component: {fileID: 5274099313666329275}
   m_Layer: 5
   m_Name: StatusBar
   m_TagString: Untagged
@@ -1409,6 +1410,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5274099313666329275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972681834443477438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d54fca3c337e94e88d77c736b61ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9075407091644756071
 GameObject:
   m_ObjectHideFlags: 0
