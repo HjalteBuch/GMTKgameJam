@@ -43,6 +43,8 @@ public class Status : MonoBehaviour
 
     void Start()
     {
+        targetPos = transform.position;
+        
         thirst = maxThirst;
         hunger = maxHunger;
         animate = GetComponentInChildren<Animator>();
@@ -57,19 +59,20 @@ public class Status : MonoBehaviour
         hunger -= hungerDecreaseRate;
         StatusBarBlock.UpdateNeeds(thirst, hunger);
         if (hunger <= 0) { 
+            hunger = 0;
             health--;
             }
         if (thirst <= 0) { 
+            thirst = 0;
             health--;
             }  
-        if(health<=0) {
+        if(health <= 0) {
             Die(); 
         }    
     }
 
     void Die()
     {
-        
         SetAnimation("dying");
     }
 
