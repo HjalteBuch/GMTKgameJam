@@ -16,6 +16,7 @@ public class Status : MonoBehaviour
 
     private int health;
     private int stamina;
+    private String objective = "Roam";
 
     private Animator animate;
     

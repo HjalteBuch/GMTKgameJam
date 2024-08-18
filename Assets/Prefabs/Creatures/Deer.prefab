@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxStamina: 100
-  maxHunger: 10
+  maxHunger: 100
   maxThirst: 100
-  visionRange: 100
+  visionRange: 10
   runSpeed: 20
   walkSpeed: 10
   StatusBarBlock: {fileID: 352506921548112153}

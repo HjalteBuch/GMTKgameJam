@@ -23,13 +23,11 @@ public class FaunaPowers : MonoBehaviour
     }
 
     void Start() {
-        goal = Goal();
+        goal =  new Vector3Int(0, 0, 0);
     }
 
     void Update()
     {
-        FindObjective();
-
         Move();
     }
 
