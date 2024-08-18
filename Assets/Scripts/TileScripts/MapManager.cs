@@ -33,6 +33,7 @@ public class MapManager : MonoBehaviour
             TileBase clickedTile = map.GetTile(gridPosition);
 
             float movementspeed = dataFromTiles[clickedTile].movementSpeed;
+            print("Food: " + dataFromTiles[clickedTile].Food + "Pos: " + gridPosition);
         }
     }
 
@@ -47,14 +48,17 @@ public class MapManager : MonoBehaviour
         return dataFromTiles[tile];
     }
 
-    public Vector3Int? GetPositionOfHerbivoreFood(int range, Vector2 worldPosition) {
+    public List<Vector3Int> GetPositionsWithNearbyFood(int range, Vector2 worldPosition) {
         Vector3Int gridPosition = map.WorldToCell(worldPosition);
-        BoundsInt area = new BoundsInt(gridPosition.x-range, gridPosition.y-range, 0, range, range, 1);
+        BoundsInt area = new BoundsInt(gridPosition.x-(range/2), gridPosition.y-(range/2), 0, range, range, 1);
+
+        List<Vector3Int> positionsWithFood = new List<Vector3Int>();
         foreach (var point in area.allPositionsWithin) {
-            if (dataFromTiles[map.GetTile(point)].herbivoreFood) {
-                return point;
+            if (dataFromTiles[map.GetTile(point)].Food) {
+                positionsWithFood.Add(point);
             }
         }
-        return null;
+
+        return positionsWithFood;
     }
 }

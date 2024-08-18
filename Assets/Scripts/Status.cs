@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Objective {
+    Roam,
+    FindFood,
+    FindWater,
+    Chill,
+}
+
 public class Status : MonoBehaviour
 {
     [Header("Max Stats")]
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int maxStamina = 100;
-    [SerializeField] int maxHunger = 100;
-    [SerializeField] int maxThirst = 100;
+    [SerializeField] public int maxHealth = 100;
+    [SerializeField] public int maxStamina = 100;
+    [SerializeField] public int maxHunger = 100;
+    [SerializeField] public int maxThirst = 100;
 
     [Header("Decrease rates")]
     [SerializeField] int thirstDecreaseRate = 1;
@@ -26,14 +33,8 @@ public class Status : MonoBehaviour
 
     [SerializeField] StatusBarBlock StatusBarBlock;
 
-    public enum Objective {
-        FindFood,
-        FindWater,
-        Chill,
-        Roam
-    }
-    private Objective objective = Objective.Roam;
-    public Vector3Int targetPos = new Vector3Int(0,0,0);
+    public Objective objective;
+    public Vector3 targetPos;
 
     private Animator animate;
     public int health;

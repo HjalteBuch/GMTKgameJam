@@ -9,7 +9,6 @@ public class TileData : ScriptableObject
     public TileBase[] tiles;
 
     public float movementSpeed;
-    public bool herbivoreFood;
-    public bool carnivoreFood;
+    public bool Food;
     public bool water;
 }
