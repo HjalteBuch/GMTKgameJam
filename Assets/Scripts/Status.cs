@@ -20,12 +20,13 @@ public class Status : MonoBehaviour
 
     [SerializeField] int visionRange = 10;
     [SerializeField] int runSpeed = 20;
-    [SerializeField] int walkSpeed = 10;
+    [SerializeField] public int walkSpeed = 10;
 
     [Header("GameObject Reference")]
 
     [SerializeField] StatusBarBlock StatusBarBlock;
-    private String objective = "Roam";
+    public String objective = "Roam";
+    public Vector3Int targetPos = new Vector3Int(0,0,0);
 
     private Animator animate;
     private int health;
