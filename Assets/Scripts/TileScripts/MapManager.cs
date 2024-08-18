@@ -33,7 +33,6 @@ public class MapManager : MonoBehaviour
             TileBase clickedTile = map.GetTile(gridPosition);
 
             float movementspeed = dataFromTiles[clickedTile].movementSpeed;
-            print("Food: " + dataFromTiles[clickedTile].Food + "Pos: " + gridPosition);
         }
     }
 
@@ -53,10 +52,12 @@ public class MapManager : MonoBehaviour
         BoundsInt area = new BoundsInt(gridPosition.x-(range/2), gridPosition.y-(range/2), 0, range, range, 1);
 
         List<Vector3Int> positionsWithFood = new List<Vector3Int>();
+        int counter = 0;
         foreach (var point in area.allPositionsWithin) {
             if (dataFromTiles[map.GetTile(point)].Food) {
                 positionsWithFood.Add(point);
             }
+            counter++;
         }
 
         return positionsWithFood;

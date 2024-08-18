@@ -59,8 +59,10 @@ public class Movement : MonoBehaviour
         Vector3Int closestPos = listOfPositions[0];
         float distance = float.MaxValue;
         foreach (Vector3Int pos in listOfPositions) {
-            if (Vector3.Distance(pos, targetPos) < distance) {
+            float newDistance = Vector3.Distance(pos, targetPos); 
+            if (newDistance < distance) {
                 closestPos = pos;
+                distance = newDistance;
             }
         }
         return closestPos;

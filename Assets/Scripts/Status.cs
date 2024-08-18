@@ -56,7 +56,6 @@ public class Status : MonoBehaviour
         thirst -= thirstDecreaseRate;
         hunger -= hungerDecreaseRate;
         StatusBarBlock.UpdateNeeds(thirst, hunger);
-        print($"\tCurrent hunger:\t{StatusBarBlock.hungerBar.GetValue()}\n\t\tCurrent thirst:\t{StatusBarBlock.thirstBar.GetValue()}");
         if (StatusBarBlock.hungerBar.GetValue() == 0 || StatusBarBlock.thirstBar.GetValue() == 0) {Die();}
     }
 
