@@ -30,7 +30,6 @@ public class Status : MonoBehaviour
     [SerializeField] public int walkSpeed = 10;
 
     [Header("GameObject Reference")]
-
     [SerializeField] StatusBarBlock StatusBarBlock;
 
     public Objective objective;
@@ -47,6 +46,7 @@ public class Status : MonoBehaviour
         thirst = maxThirst;
         hunger = maxHunger;
         animate = GetComponentInChildren<Animator>();
+
         StatusBarBlock.SetMaxValues(maxHealth, maxStamina, maxThirst, maxHunger);
 
         InvokeRepeating("statusUpdate", 1f, 1f); //will run statusUpdate function once every 1 sec
@@ -56,7 +56,7 @@ public class Status : MonoBehaviour
         thirst -= thirstDecreaseRate;
         hunger -= hungerDecreaseRate;
         StatusBarBlock.UpdateNeeds(thirst, hunger);
-        if (StatusBarBlock.hungerBar.GetValue() == 0 || StatusBarBlock.thirstBar.GetValue() == 0) {Die();}
+        if (hunger == 0 || thirst == 0) { Die(); }
     }
 
     void Die()
