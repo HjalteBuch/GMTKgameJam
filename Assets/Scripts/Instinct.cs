@@ -11,7 +11,6 @@ public class Instinct : MonoBehaviour
     void Start()
     {
         mapManager = FindObjectOfType<MapManager>();
-        print(mapManager);
     }
 
     void Update()
@@ -21,6 +20,8 @@ public class Instinct : MonoBehaviour
             Vector3Int gridPosition = mapManager.map.WorldToCell(mousePosition);
             status.targetPos = gridPosition;
         }
-        
+    }
+
+    public void SetObjective() {
     }
 }

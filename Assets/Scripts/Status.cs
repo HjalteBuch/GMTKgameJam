@@ -18,21 +18,28 @@ public class Status : MonoBehaviour
 
     [Header("Movement")]
 
-    [SerializeField] int visionRange = 10;
-    [SerializeField] int runSpeed = 20;
+    [SerializeField] public int visionRange = 10;
+    [SerializeField] public int runSpeed = 20;
     [SerializeField] public int walkSpeed = 10;
 
     [Header("GameObject Reference")]
 
     [SerializeField] StatusBarBlock StatusBarBlock;
-    public String objective = "Roam";
+
+    public enum Objective {
+        FindFood,
+        FindWater,
+        Chill,
+        Roam
+    }
+    private Objective objective = Objective.Roam;
     public Vector3Int targetPos = new Vector3Int(0,0,0);
 
     private Animator animate;
-    private int health;
-    private int stamina;
-    private int thirst;
-    private int hunger;
+    public int health;
+    public int stamina;
+    public int thirst;
+    public int hunger;
 
     void Start()
     {
