@@ -14,36 +14,51 @@ public class TileChanger : MonoBehaviour
     [SerializeField] private Tile hoverTile = null;
     
     private TileBase paintingTile = null;
+    private AudioClip[] placmentSoundEffect;
     private Vector3Int previousMousePos = new Vector3Int();
+    private Vector3Int mousePos = new Vector3Int();
+
 
     void Start() {
         grid = gameObject.GetComponent<Grid>();
     }
 
     void Update() {
-        // Mouse over -> highlight tile
-        Vector3Int mousePos = GetMousePosition();
-        if (!mousePos.Equals(previousMousePos)) {
-            hoverMap.SetTile(previousMousePos, null);
-            hoverMap.SetTile(mousePos, hoverTile);
+        mousePos = GetMousePosition();
 
-            previewMap.SetTile(previousMousePos, null);
-            previewMap.SetTile(mousePos, paintingTile);
-            
-            previousMousePos = mousePos;
+        if (!mousePos.Equals(previousMousePos)) {
+            createPreview();
         }
 
-        // Left mouse click -> add path tile
-        if (Input.GetMouseButton(0) && paintingTile != null) {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                biomeMap.SetTile(mousePos, paintingTile);
-            }
+        if (Input.GetMouseButton(0) ) {
+            PaintTile();
         }
     }
 
-    public void SetPaintingTile (TileBase newTile) {
+    void createPreview()
+    {
+        hoverMap.SetTile(previousMousePos, null);
+        hoverMap.SetTile(mousePos, hoverTile);
+
+        previewMap.SetTile(previousMousePos, null);
+        previewMap.SetTile(mousePos, paintingTile);
+        
+        previousMousePos = mousePos;
+    }
+
+    void PaintTile() 
+    {
+        if (paintingTile == null) {return;}
+        if (EventSystem.current.IsPointerOverGameObject()) {return;}
+        if (biomeMap.GetTile(mousePos) == paintingTile) {return;} 
+
+        biomeMap.SetTile(mousePos, paintingTile);
+        SFXManager.instance.PlayRandomSFXClip(placmentSoundEffect, mousePos, 1f);
+    }
+
+    public void SetPaintingTile (TileBase newTile, AudioClip[] tilePlacmentSound) {
         paintingTile = newTile;
+        placmentSoundEffect = tilePlacmentSound;
     }
 
     Vector3Int GetMousePosition () {
