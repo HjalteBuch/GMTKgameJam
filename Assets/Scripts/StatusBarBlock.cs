@@ -8,8 +8,16 @@ public class StatusBarBlock : MonoBehaviour
     public StatusBar staminaBar;
     public StatusBar thirstBar;
     public StatusBar hungerBar;
-    public void UpdateNeeds(){
-        hungerBar.SetValue(hungerBar.GetValue()-1);
-        thirstBar.SetValue(thirstBar.GetValue()-1);
+    public void UpdateNeeds(int thirst, int hunger)
+    {
+        thirstBar.SetValue(thirst);
+        hungerBar.SetValue(hunger);
+    }
+
+    public void SetMaxValues(int health, int stamina, int thirst, int hunger){
+         healthBar.SetMaxValue(health);
+        staminaBar.SetMaxValue(stamina);
+         thirstBar.SetMaxValue(thirst);
+         hungerBar.SetMaxValue(hunger);
     }
 }
