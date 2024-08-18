@@ -11,8 +11,11 @@ public class Movement : MonoBehaviour
 
     void Walk()
     {
-        status.targetPos.z = transform.position.z;
-        transform.position = Vector3.MoveTowards(transform.position, status.targetPos, status.walkSpeed * Time.deltaTime);
+        Vector3 tp = status.targetPos;
+        tp.z = transform.position.z;
+        tp.x += 0.5f;
+        tp.y += 0.5f;
+        transform.position = Vector3.MoveTowards(transform.position, tp, status.walkSpeed * Time.deltaTime);
     }
 
     void Start()
@@ -25,7 +28,6 @@ public class Movement : MonoBehaviour
     {
         switch (status.objective) {
             case Objective.FindFood:
-                print("Find Food");
                 var pos = transform.position;
                 List<Vector3Int> foodNearby = mapManager.GetPositionsWithNearbyFood(status.visionRange, pos);
                 if (foodNearby.Count == 0) {
@@ -35,16 +37,12 @@ public class Movement : MonoBehaviour
                 status.targetPos = GetClosestPosition(foodNearby, pos);
                 break;
             case Objective.FindWater:
-                print("Find Water");
                 break;
             case Objective.Roam:
-                print("Roam");
                 break;
             case Objective.Chill:
-                print("Chill");
                 break;
             default:
-                print("default");
                 break;
         }
     }
