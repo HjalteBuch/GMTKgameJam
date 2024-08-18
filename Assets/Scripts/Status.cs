@@ -25,8 +25,11 @@ public class Status : MonoBehaviour
     [Header("GameObject Reference")]
 
     [SerializeField] StatusBarBlock StatusBarBlock;
+    private String objective = "Roam";
 
     private Animator animate;
+    private int health;
+    private int stamina;
     private int thirst;
     private int hunger;
 
