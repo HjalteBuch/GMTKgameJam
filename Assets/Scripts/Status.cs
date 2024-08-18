@@ -10,7 +10,7 @@ public class Status : MonoBehaviour
     [SerializeField] int maxStamina = 100;
     [SerializeField] int maxHunger = 100;
     [SerializeField] int maxThirst = 100;
-    [SerializeField] int visionRange = 100;
+    [SerializeField] int visionRange = 10;
     [SerializeField] int runSpeed = 20;
     [SerializeField] int walkSpeed = 10;
 
@@ -37,6 +37,7 @@ public class Status : MonoBehaviour
         print($"\tCurrent hunger:\t{StatusBarBlock.hungerBar.GetValue()}\n\t\tCurrent thirst:\t{StatusBarBlock.thirstBar.GetValue()}");
         if (StatusBarBlock.hungerBar.GetValue() == 0 || StatusBarBlock.thirstBar.GetValue() == 0) {Die();}
     }
+
 
     void Die()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,15 +9,13 @@ public class FaunaPowers : MonoBehaviour
 
     private MapManager mapManager;
 
-    [SerializeField]
-    private float moveTime;
-    [SerializeField]
-    private float baseSpeed;
+    [SerializeField] private float moveTime;
+    [SerializeField] private float baseSpeed;
     private float moveCounter;
 
+    private String objective = "Roam";
     private Vector3Int goal;
 
-    // Start is called before the first frame update
     void Awake()
     {
         mapManager = FindObjectOfType<MapManager>();
@@ -27,8 +26,14 @@ public class FaunaPowers : MonoBehaviour
         goal = Goal();
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        FindObjective();
+
+        Move();
+    }
+
+    void FindObjective()
     {
         moveCounter -= Time.deltaTime;
 
@@ -36,6 +41,10 @@ public class FaunaPowers : MonoBehaviour
             moveCounter = moveTime;
             goal = Goal();
         }
+    }
+
+    void Move()
+    {
         transform.position = Vector3.MoveTowards(transform.position, (Vector3)goal, baseSpeed * Time.deltaTime);
     }
 
@@ -47,7 +56,7 @@ public class FaunaPowers : MonoBehaviour
 
     private Vector3Int RandomGoal () {
         var v = mapManager.GetCurrentTilePosition(transform.position);
-        return new Vector3Int(Random.Range(v.x-visionRange, v.y-visionRange), Random.Range(v.x+visionRange, v.y+visionRange), 0);
+        return new Vector3Int(UnityEngine.Random.Range(v.x-visionRange, v.y-visionRange), UnityEngine.Random.Range(v.x+visionRange, v.y+visionRange), 0);
     }
 
 }
