@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: HoverStatic
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 2e9b7a1808045c84983c3931327d282e, type: 3}
+  m_Sprite: {fileID: 1952239190, guid: 995f45d7b84e05247a3e787948a2ba0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

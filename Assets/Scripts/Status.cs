@@ -53,11 +53,16 @@ public class Status : MonoBehaviour
 
     void Die()
     {
-        animate.SetTrigger("dying");
+        SetAnimation("dying");
     }
 
     void Update()
     {
         
+    }
+
+    public void SetAnimation(String newAnimation)
+    {
+        animate.SetTrigger(newAnimation);
     }
 }
