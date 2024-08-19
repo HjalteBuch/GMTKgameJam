@@ -28,7 +28,7 @@ public class Status : MonoBehaviour
     [SerializeField] public String objective;
     public Vector3 targetPos;
 
-    public Animator animate;
+    private Animator animate;
     public int health;
     public int stamina;
     public int thirst;

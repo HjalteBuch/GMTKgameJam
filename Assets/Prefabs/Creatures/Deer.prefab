@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4191601873523849295}
   - component: {fileID: 8702563042217117653}
+  - component: {fileID: 4872051153014210792}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -53,15 +54,28 @@ MonoBehaviour:
   thirstDecreaseRate: 1
   hungerDecreaseRate: 1
   visionRange: 10
-  runSpeed: 20
-  walkSpeed: 10
+  runSpeed: 2
+  walkSpeed: 1
   StatusBarBlock: {fileID: 352506921548112153}
   objective: 0
   targetPos: {x: 0, y: 0, z: 0}
-  health: 0
-  stamina: 0
-  thirst: 0
-  hunger: 0
+  health: 100
+  stamina: 100
+  thirst: 100
+  hunger: 100
+--- !u!114 &4872051153014210792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154832656799243660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0172d7937e384e1a89a5987f842b3fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 8702563042217117653}
 --- !u!1 &5361109019926854165
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +233,10 @@ PrefabInstance:
     - target: {fileID: 3369239068652063672, guid: b7d1bdacd3402d14c89346282afd9c3b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443435600183228745, guid: b7d1bdacd3402d14c89346282afd9c3b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4108576525930448238, guid: b7d1bdacd3402d14c89346282afd9c3b, type: 3}
       propertyPath: m_AnchoredPosition.y
