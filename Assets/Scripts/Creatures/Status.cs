@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Objective {
-    Roam,
-    FindFood,
-    Eat,
-    FindWater,
-    Chill,
-}
-
 public class Status : MonoBehaviour
 {
     [Header("Max Stats")]
@@ -33,10 +25,10 @@ public class Status : MonoBehaviour
     [Header("GameObject Reference")]
     [SerializeField] StatusBarBlock StatusBarBlock;
 
-    public Objective objective;
+    [SerializeField] public String objective;
     public Vector3 targetPos;
 
-    private Animator animate;
+    public Animator animate;
     public int health;
     public int stamina;
     public int thirst;

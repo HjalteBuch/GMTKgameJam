@@ -1,22 +1,26 @@
 using UnityEngine;
 
-namespace FSM {
-    public abstract class State : ScriptableObject
-    {
-        protected AnimalStateMachine _animalStateMachine;
-
-        public void SetAnimalStatemachine(AnimalStateMachine animalStateMachine) {
-            _animalStateMachine = animalStateMachine;
-        }
+public abstract class State
+{
+    protected AnimalStateMachine sc;
+    protected MapManager mm;
+    protected Status status;
 
 
-        public void UpdateState() {
-        }
-
-        public void OnExit() {
-        }
-
-        public void OnEnter() {
-        }
+    public void OnStateEnter(AnimalStateMachine animalStateMachine, MapManager mapManager, Status animalStatus) {
+        sc = animalStateMachine;
+        mm = mapManager;
+        status = animalStatus;
+        OnEnter();
     }
+
+    protected virtual void OnEnter() {
+    }
+
+    public virtual void UpdateState() {
+    }
+
+    public virtual void OnExit() {
+    }
+
 }

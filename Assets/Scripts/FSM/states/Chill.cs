@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-namespace FSM {
-    public class Chill : State
-    {
-        public void UpdateState() {
-        }
+public class Chill : State
+{
+    protected override void OnEnter() {
+        status.objective = "Chilling";
+    }
 
-        public void OnExit() {
+    public override void UpdateState() {
+        if (status.hunger < status.maxHunger / 2) {
+            sc.ChangeState(new FindFood());
         }
+    }
 
-        public void OnEnter() {
-            _animalStateMachine.status.SetAnimation("Idle");
-        }
+    public override void OnExit() {
     }
 }
