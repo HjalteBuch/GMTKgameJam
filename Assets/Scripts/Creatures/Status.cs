@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public enum Objective {
     Roam,
     FindFood,
+    Eat,
     FindWater,
     Chill,
 }
