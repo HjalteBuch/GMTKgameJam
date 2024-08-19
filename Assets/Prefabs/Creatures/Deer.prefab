@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4191601873523849295}
   - component: {fileID: 8702563042217117653}
-  - component: {fileID: 2396998781332862918}
-  - component: {fileID: 8185953792318128916}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -64,32 +62,6 @@ MonoBehaviour:
   stamina: 0
   thirst: 0
   hunger: 0
---- !u!114 &2396998781332862918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154832656799243660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e057e9ffe51230bb2a1023ec4a0e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  status: {fileID: 8702563042217117653}
---- !u!114 &8185953792318128916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154832656799243660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de5af7686365c9128fe6afbbddcd967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  status: {fileID: 8702563042217117653}
 --- !u!1 &5361109019926854165
 GameObject:
   m_ObjectHideFlags: 0

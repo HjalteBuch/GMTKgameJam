@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
     private void SetTargetPos()
     {
         switch (status.objective) {
-            case Objective.FindFood:
+            case "food":
                 var pos = transform.position;
                 List<Vector3Int> foodNearby = mapManager.GetPositionsWithNearbyFood(status.visionRange, pos);
                 if (foodNearby.Count == 0) {
@@ -34,9 +34,9 @@ public class Movement : MonoBehaviour
                 }
                 status.targetPos = GetClosestPosition(foodNearby, pos);
                 break;
-            case Objective.FindWater:
+            case "water":
                 break;
-            case Objective.Roam:
+            case "roam":
                 break;
             default:
                 break;
@@ -46,24 +46,24 @@ public class Movement : MonoBehaviour
     void Update()
     {
         switch (status.objective) {
-            case Objective.FindFood:
+            case "food":
                 if (Vector3.Distance(transform.position, status.targetPos) > 0.2f) {
                     status.SetAnimation("walking");
                     Walk();
                 } else {
                     if (mapManager.IsCurrentTileFood(transform.position)){
-                        status.objective = Objective.Eat;
+                        status.objective = "eat";
                     }
                 }
                 break;
-            case Objective.Eat:
+            case "eat":
                 status.SetAnimation("feeding");
                 break;
-            case Objective.FindWater:
+            case "water":
                 break;
-            case Objective.Roam:
+            case "roam":
                 break;
-            case Objective.Chill:
+            case "chill":
                 break;
             default:
                 break;
