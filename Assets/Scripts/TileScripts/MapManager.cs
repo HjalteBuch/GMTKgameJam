@@ -33,6 +33,7 @@ public class MapManager : MonoBehaviour
             TileBase clickedTile = map.GetTile(gridPosition);
 
             float movementspeed = dataFromTiles[clickedTile].movementSpeed;
+            print(mousePosition);
         }
     }
 
@@ -61,5 +62,10 @@ public class MapManager : MonoBehaviour
         }
 
         return positionsWithFood;
+    }
+
+    public bool IsCurrentTileFood(Vector3 pos) {
+        Vector3Int pos3Int = map.WorldToCell(pos);
+        return dataFromTiles[map.GetTile(pos3Int)].Food;
     }
 }

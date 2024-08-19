@@ -16,6 +16,9 @@ public class Instinct : MonoBehaviour
 
     public void SetObjective() {
         if (status.hunger < status.maxHunger / 2) {
+            if (mapManager.IsCurrentTileFood(transform.position)){
+                status.objective = Objective.Eat;
+            }
             status.objective = Objective.FindFood;
         } else if (status.thirst < status.maxThirst / 2) {
             status.objective = Objective.FindWater;

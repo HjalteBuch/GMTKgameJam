@@ -13,8 +13,6 @@ public class Movement : MonoBehaviour
     {
         Vector3 tp = status.targetPos;
         tp.z = transform.position.z;
-        tp.x += 0.5f;
-        tp.y += 0.5f;
         transform.position = Vector3.MoveTowards(transform.position, tp, status.walkSpeed * Time.deltaTime);
     }
 
@@ -40,8 +38,6 @@ public class Movement : MonoBehaviour
                 break;
             case Objective.Roam:
                 break;
-            case Objective.Chill:
-                break;
             default:
                 break;
         }
@@ -49,12 +45,38 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Walk();
+        switch (status.objective) {
+            case Objective.FindFood:
+                if (Vector3.Distance(transform.position, status.targetPos) > 0.2f) {
+                    status.SetAnimation("walking");
+                    Walk();
+                } else {
+                    if (mapManager.IsCurrentTileFood(transform.position)){
+                        status.objective = Objective.Eat;
+                    }
+                }
+                break;
+            case Objective.Eat:
+                status.SetAnimation("feeding");
+                break;
+            case Objective.FindWater:
+                break;
+            case Objective.Roam:
+                break;
+            case Objective.Chill:
+                break;
+            default:
+                break;
+        }
+
+        if (transform.position == status.targetPos) {
+            status.SetAnimation("idle");
+        }
     }
 
 
-    private Vector3Int GetClosestPosition(List<Vector3Int> listOfPositions, Vector3 targetPos) {
-        Vector3Int closestPos = listOfPositions[0];
+    private Vector3 GetClosestPosition(List<Vector3Int> listOfPositions, Vector3 targetPos) {
+        Vector3 closestPos = listOfPositions[0];
         float distance = float.MaxValue;
         foreach (Vector3Int pos in listOfPositions) {
             float newDistance = Vector3.Distance(pos, targetPos); 
@@ -63,6 +85,8 @@ public class Movement : MonoBehaviour
                 distance = newDistance;
             }
         }
+        closestPos.x += 0.5f;
+        closestPos.y += 0.5f;
         return closestPos;
     }
 }
