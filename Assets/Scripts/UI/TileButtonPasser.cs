@@ -8,6 +8,7 @@ public class TileButtonPasser : MonoBehaviour
 {
     [SerializeField] TileChanger tileChanger;
     [SerializeField] TileBase tileToPass;
+    [SerializeField] AudioClip[] audioToPass;
     
     private Button button;
 
@@ -18,7 +19,7 @@ public class TileButtonPasser : MonoBehaviour
 
     void OnClick() 
     {
-        tileChanger.SetPaintingTile(tileToPass);
+        tileChanger.SetPaintingTile(tileToPass, audioToPass);
     }
 
 }
