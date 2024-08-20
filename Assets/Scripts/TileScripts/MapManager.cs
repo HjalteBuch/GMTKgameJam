@@ -85,15 +85,19 @@ public class MapManager : MonoBehaviour
             TileBase spreadableTile = GetTileData(position).spreadableTo;
             bool originTileCannotSpread = spreadableTile == null;
             if (originTileCannotSpread) {
-                return;
+                continue;
             }
+            
             var neighbours = GetNeighbors(position);
             foreach (var neighbouringTile in neighbours)
             {
                 bool neighbourIsSpreadableTo = GetTileData(neighbouringTile).tiles[0] == spreadableTile;
                 if (neighbourIsSpreadableTo)
                 {
-                    map.SetTile(neighbouringTile, GetTileData(position).tiles[0]);
+                    float randomValue = UnityEngine.Random.value;
+                    if (randomValue < .005f) {
+                        map.SetTile(neighbouringTile, GetTileData(position).tiles[0]);
+                    }
                 }
             }
         }

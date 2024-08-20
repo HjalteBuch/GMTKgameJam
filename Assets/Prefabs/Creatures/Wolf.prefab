@@ -54,15 +54,15 @@ MonoBehaviour:
   thirstDecreaseRate: 1
   hungerDecreaseRate: 1
   visionRange: 10
-  runSpeed: 20
-  walkSpeed: 10
+  runSpeed: 2
+  walkSpeed: 1
   StatusBarBlock: {fileID: 6623890885683792180}
   objective: 
   targetPos: {x: 0, y: 0, z: 0}
-  health: 100
-  stamina: 100
-  thirst: 100
-  hunger: 100
+  health: 0
+  stamina: 0
+  thirst: 0
+  hunger: 0
 --- !u!114 &2781529603206818740
 MonoBehaviour:
   m_ObjectHideFlags: 0

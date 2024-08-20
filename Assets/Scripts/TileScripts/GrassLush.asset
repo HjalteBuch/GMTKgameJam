@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42edb15246698533ad163606484c80e, type: 3}
   m_Name: GrassLush
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 2f6221eb375f0634b8e087d9d28299ce, type: 2}
   movementSpeed: 0
-  food: 0
+  food: 1
   water: 0
-  spreadableTo: {fileID: 0}
+  spreadableTo: {fileID: 11400000, guid: cd95334fcb0edca45a51fe3b03eea7be, type: 2}
