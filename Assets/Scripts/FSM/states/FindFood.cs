@@ -6,15 +6,20 @@ public class FindFood : State
 {
     protected override void OnEnter() {
         status.objective = "Finding food";
-        Vector3 food = mm.GetClosestTile(status.visionRange, status.transform.position, tile => tile.food);
-        if (food == Vector3.zero) {
-            // State should be changed to Roam, but Roam not implemented yet
-            sc.ChangeState(new Chill());
-            return;
-        } else {
-
-            status.targetPos = food;
-            status.SetAnimation("walking");
+        Vector3 food = Vector3.zero;
+        switch (status.feedingStrategy) {
+            case FeedingStrategy.grazer:
+                food = mm.GetClosestTile(status.visionRange, status.transform.position, tile => tile.food);
+                if (food == Vector3.zero) {
+                    // State should be changed to Roam, but Roam not implemented yet
+                    sc.ChangeState(new Chill());
+                    break;
+                }
+                status.targetPos = food;
+                status.SetAnimation("walking");
+                break;
+            case FeedingStrategy.predetor:
+                break;
         }
     }
 

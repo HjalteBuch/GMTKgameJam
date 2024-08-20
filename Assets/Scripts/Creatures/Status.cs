@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum FeedingStrategy {
+    grazer,
+    predetor,
+}
 public class Status : MonoBehaviour
 {
     [Header("Max Stats")]
@@ -17,7 +21,6 @@ public class Status : MonoBehaviour
     [SerializeField] int hungerDecreaseRate = 1;
 
     [Header("Movement")]
-
     [SerializeField] public int visionRange = 10;
     [SerializeField] public int runSpeed = 20;
     [SerializeField] public int walkSpeed = 10;
@@ -25,6 +28,8 @@ public class Status : MonoBehaviour
     [Header("GameObject Reference")]
     [SerializeField] StatusBarBlock StatusBarBlock;
 
+    [Header("Charectaristics")]
+    [SerializeField] public FeedingStrategy feedingStrategy;
     [SerializeField] public String objective;
     public Vector3 targetPos;
 
@@ -46,6 +51,7 @@ public class Status : MonoBehaviour
     void Start()
     {
         animate = GetComponentInChildren<Animator>();
+        SetAnimation("idle");
 
         StatusBarBlock.SetMaxValues(maxHealth, maxStamina, maxThirst, maxHunger);
 
