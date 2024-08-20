@@ -6,6 +6,7 @@ public class Flee : State
 {
     protected override void OnEnter() {
         status.SetAnimation("running");
+        status.objective = "Running for it's life";
         RandomFleelocation();
     }
 
