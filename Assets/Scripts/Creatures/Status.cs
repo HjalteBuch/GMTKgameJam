@@ -20,6 +20,7 @@ public class Status : MonoBehaviour
     [SerializeField] public int maxStamina = 100;
     [SerializeField] public int maxHunger = 100;
     [SerializeField] public int maxThirst = 100;
+    [SerializeField] public int attackDamage = 100;
 
     [Header("Decrease rates")]
     [SerializeField] int thirstDecreaseRate = 1;
@@ -35,9 +36,11 @@ public class Status : MonoBehaviour
 
     [Header("Charectaristics")]
     [SerializeField] public FeedingStrategy feedingStrategy;
-    [SerializeField] public Animal[] prey;
+    [SerializeField] public List<Animal> prey;
+    [SerializeField] public Status activePrey;
     [SerializeField] public Animal animal;
     [SerializeField] public String objective;
+    [SerializeField] public LayerMask layerMask;
     public Vector3 targetPos;
 
     private Animator animate;
@@ -95,5 +98,14 @@ public class Status : MonoBehaviour
     public void SetAnimation(String newAnimation)
     {
         animate.SetTrigger(newAnimation);
+    }
+
+    public void TakeDamage(int damage) {
+        SetAnimation("hit");
+        health -= damage;
+    }
+    public void DealDamage() {
+        SetAnimation("attack");
+        activePrey.TakeDamage(attackDamage);
     }
 }

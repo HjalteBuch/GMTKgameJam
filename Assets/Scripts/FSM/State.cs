@@ -19,10 +19,17 @@ public abstract class State
 
     public void OnUpdateState() {
         if (status.feedingStrategy == FeedingStrategy.predetor) {
-            Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(status.gameObject.transform.position, status.visionRange);
-            Debug.Log("Looking for objects in range");
+            Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(status.transform.position, (float)status.visionRange);
+
             foreach (Collider2D collider in objectsInRange) {
-                Debug.Log("A wild " + status.name + " appeared!");
+                Status objectStatus = collider.gameObject.GetComponent<Status>();
+                if (objectStatus != null) {
+                    Debug.Log(objectStatus.prey);
+                    if (status.prey.Contains(objectStatus.animal)) {
+                        status.activePrey = objectStatus;
+                        sc.ChangeState(new Chase());
+                    }
+                }
             }
         }
 
