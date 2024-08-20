@@ -34,12 +34,17 @@ public class Status : MonoBehaviour
     public int thirst;
     public int hunger;
 
-    void Start()
-    {
-        targetPos = transform.position;
-        
+    void Awake() {
+        health = maxHealth;
+        stamina = maxStamina;
         thirst = maxThirst;
         hunger = maxHunger;
+
+        targetPos = transform.position;
+    }
+    
+    void Start()
+    {
         animate = GetComponentInChildren<Animator>();
 
         StatusBarBlock.SetMaxValues(maxHealth, maxStamina, maxThirst, maxHunger);
@@ -50,7 +55,7 @@ public class Status : MonoBehaviour
     void statusUpdate() {
         thirst -= thirstDecreaseRate;
         hunger -= hungerDecreaseRate;
-        StatusBarBlock.UpdateNeeds(thirst, hunger);
+        StatusBarBlock.UpdateNeeds(health, stamina, thirst, hunger);
         if (hunger <= 0) { 
             hunger = 0;
             health--;

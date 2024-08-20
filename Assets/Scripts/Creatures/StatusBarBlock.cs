@@ -8,8 +8,10 @@ public class StatusBarBlock : MonoBehaviour
     public StatusBar staminaBar;
     public StatusBar thirstBar;
     public StatusBar hungerBar;
-    public void UpdateNeeds(int thirst, int hunger)
+    public void UpdateNeeds(int health, int stamina, int thirst, int hunger)
     {
+        healthBar.SetValue(health);
+        staminaBar.SetValue(stamina);
         thirstBar.SetValue(thirst);
         hungerBar.SetValue(hunger);
     }
