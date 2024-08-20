@@ -9,6 +9,7 @@ public class TileData : ScriptableObject
     public TileBase[] tiles;
     public float movementSpeed;
     public bool food;
+    public int resource;
     public bool water;
     public TileBase spreadableTo;
 }
