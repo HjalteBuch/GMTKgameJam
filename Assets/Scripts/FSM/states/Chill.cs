@@ -7,7 +7,7 @@ public class Chill : State
         status.objective = "Chilling";
     }
 
-    public override void UpdateState() {
+    protected override void UpdateState() {
         if (status.hunger < status.maxHunger / 2) {
             sc.ChangeState(new FindFood());
         } else if (status.thirst < status.maxThirst / 2) {

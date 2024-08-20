@@ -17,7 +17,7 @@ public class FindWater : State
         status.SetAnimation("walking");
     }
 
-    public override void UpdateState() {
+    protected override void UpdateState() {
         Walk();
         if (Vector3.Distance(status.transform.position, status.targetPos) < 0.2f) {
             sc.ChangeState(new Drink());

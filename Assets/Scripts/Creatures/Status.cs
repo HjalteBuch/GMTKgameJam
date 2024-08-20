@@ -8,6 +8,11 @@ public enum FeedingStrategy {
     grazer,
     predetor,
 }
+
+public enum Animal {
+    deer,
+    wolf,
+}
 public class Status : MonoBehaviour
 {
     [Header("Max Stats")]
@@ -30,6 +35,8 @@ public class Status : MonoBehaviour
 
     [Header("Charectaristics")]
     [SerializeField] public FeedingStrategy feedingStrategy;
+    [SerializeField] public Animal[] prey;
+    [SerializeField] public Animal animal;
     [SerializeField] public String objective;
     public Vector3 targetPos;
 

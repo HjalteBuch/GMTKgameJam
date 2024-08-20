@@ -17,10 +17,21 @@ public abstract class State
     protected virtual void OnEnter() {
     }
 
-    public virtual void UpdateState() {
+    public void OnUpdateState() {
+        if (status.feedingStrategy == FeedingStrategy.predetor) {
+            Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(status.gameObject.transform.position, status.visionRange);
+            Debug.Log("Looking for objects in range");
+            foreach (Collider2D collider in objectsInRange) {
+                Debug.Log("A wild " + status.name + " appeared!");
+            }
+        }
+
+        UpdateState();
+    }
+
+    protected virtual void UpdateState() {
     }
 
     public virtual void OnExit() {
     }
-
 }

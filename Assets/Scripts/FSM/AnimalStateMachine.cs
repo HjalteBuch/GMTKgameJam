@@ -12,7 +12,7 @@ public class AnimalStateMachine : MonoBehaviour
     }
 
     void Update() {
-        currentState.UpdateState();
+        currentState.OnUpdateState();
     }
 
     public void ChangeState(State newState) {
