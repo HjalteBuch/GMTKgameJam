@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2154832656799243660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57,7 +57,8 @@ MonoBehaviour:
   runSpeed: 2
   walkSpeed: 1
   StatusBarBlock: {fileID: 352506921548112153}
-  objective: 0
+  feedingStrategy: 0
+  objective: 
   targetPos: {x: 0, y: 0, z: 0}
   health: 0
   stamina: 0

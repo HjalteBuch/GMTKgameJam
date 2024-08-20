@@ -25,7 +25,8 @@ public class FindFood : State
 
     public override void UpdateState() {
         Walk();
-        if (Vector3.Distance(status.transform.position, status.targetPos) < 0.2f) {
+        bool nearTarget = Vector3.Distance(status.transform.position, status.targetPos) < 0.2f;
+        if (nearTarget) {
             sc.ChangeState(new Eat());
         }
     }

@@ -23,6 +23,7 @@ public class Eat : State
         }
 
         if(status.hunger >= status.maxHunger) {
+            status.health = status.maxHealth;
             sc.ChangeState(new Chill());
         }
     }
@@ -32,6 +33,33 @@ public class Eat : State
     }
 
     private void ReplenishHunger() {
-        status.hunger ++;
+        status.hunger += ConsumeResource();
+    }
+
+    private int ConsumeResource() {
+        int amountConsumed = 0;
+        switch (status.feedingStrategy)
+        {
+            case FeedingStrategy.grazer:
+                Vector3Int tilePosition = mm.map.WorldToCell(status.transform.position);
+                TileData tiledata = mm.GetTileData(tilePosition);
+                if (tiledata.food) {
+                    amountConsumed = 5;
+                    tiledata.resource -= amountConsumed;
+                    if (tiledata.resource <= 0) {
+                        mm.map.SetTile(tilePosition, tiledata.spreadableTo);
+                    }
+                }
+                else
+                {
+                    sc.ChangeState(new FindFood());
+                }
+                break;
+            case FeedingStrategy.predetor:
+                amountConsumed = 20;
+                break;
+        }
+
+        return amountConsumed;
     }
 }
