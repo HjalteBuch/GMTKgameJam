@@ -17,9 +17,9 @@ public class StatusBarBlock : MonoBehaviour
     }
 
     public void SetMaxValues(int health, int stamina, int thirst, int hunger){
-         healthBar.SetMaxValue(health);
+        healthBar.SetMaxValue(health);
         staminaBar.SetMaxValue(stamina);
-         thirstBar.SetMaxValue(thirst);
-         hungerBar.SetMaxValue(hunger);
+        thirstBar.SetMaxValue(thirst);
+        hungerBar.SetMaxValue(hunger);
     }
 }

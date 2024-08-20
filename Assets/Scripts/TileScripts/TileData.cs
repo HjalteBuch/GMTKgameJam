@@ -10,4 +10,5 @@ public class TileData : ScriptableObject
     public float movementSpeed;
     public bool food;
     public bool water;
+    public TileBase spreadableTo;
 }

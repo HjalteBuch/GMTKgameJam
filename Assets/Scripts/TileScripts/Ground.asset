@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a42edb15246698533ad163606484c80e, type: 3}
-  m_Name: GrassTileData
+  m_Name: Ground
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 2f6221eb375f0634b8e087d9d28299ce, type: 2}
-  - {fileID: 11400000, guid: cd95334fcb0edca45a51fe3b03eea7be, type: 2}
-  - {fileID: 11400000, guid: 01d943135d037ff4898ff9039fc87a39, type: 2}
-  movementSpeed: 1
-  food: 1
+  - {fileID: 11400000, guid: 7db81be6b3e92b6468cade2066e85d3f, type: 2}
+  movementSpeed: 5
+  herbivoreFood: 0
+  carnivoreFood: 0
   water: 0

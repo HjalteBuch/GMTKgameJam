@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a42edb15246698533ad163606484c80e, type: 3}
-  m_Name: WaterTileData
+  m_Name: GrassGrown
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 674308dc1d76f8c45a60bedbcbeada48, type: 2}
-  movementSpeed: 0
-  Food: 0
-  water: 1
+  - {fileID: 11400000, guid: cd95334fcb0edca45a51fe3b03eea7be, type: 2}
+  movementSpeed: 1
+  food: 1
+  water: 0
+  spreadableTo: {fileID: 11400000, guid: 01d943135d037ff4898ff9039fc87a39, type: 2}

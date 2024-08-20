@@ -14,6 +14,13 @@ public class MapManager : MonoBehaviour
 
     private Dictionary<TileBase, TileData> dataFromTiles;
 
+    private readonly Vector3Int[] neighbourPositions = {
+            Vector3Int.up,
+            Vector3Int.right,
+            Vector3Int.down,
+            Vector3Int.left,
+        };
+
     private void Awake() {
         dataFromTiles = new Dictionary<TileBase, TileData>();
         foreach (var tileData in tileDatas) {
@@ -21,6 +28,8 @@ public class MapManager : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
+
+        InvokeRepeating("TileSpread", 1f, 1f);
     }
 
 
@@ -38,13 +47,8 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public Vector3Int GetCurrentTilePosition(Vector3 worldPosition) {
-        return map.WorldToCell(worldPosition);
-    }
-
-    public TileData GetTileData(Vector2 worldPosition) {
-        Vector3Int gridPosition = map.WorldToCell(worldPosition);
-        TileBase tile = map.GetTile(gridPosition);
+    public TileData GetTileData(Vector3Int worldPosition) {
+        TileBase tile = map.GetTile(worldPosition);
 
         return dataFromTiles[tile];
     }
@@ -74,5 +78,37 @@ public class MapManager : MonoBehaviour
         }
 
         return closestPoint;
+    }
+
+    private void TileSpread() {
+        foreach (var position in map.cellBounds.allPositionsWithin) {
+            TileBase spreadableTile = GetTileData(position).spreadableTo;
+            bool originTileCannotSpread = spreadableTile == null;
+            if (originTileCannotSpread) {
+                return;
+            }
+            var neighbours = GetNeighbors(position);
+            foreach (var neighbouringTile in neighbours)
+            {
+                bool neighbourIsSpreadableTo = GetTileData(neighbouringTile).tiles[0] == spreadableTile;
+                if (neighbourIsSpreadableTo)
+                {
+                    map.SetTile(neighbouringTile, GetTileData(position).tiles[0]);
+                }
+            }
+        }
+    }
+
+    private List<Vector3Int> GetNeighbors(Vector3Int tilePosition) {
+        var neighbouringTiles = new List<Vector3Int>();
+        foreach(var neighbourPosition in neighbourPositions) {
+            var position = tilePosition + neighbourPosition;
+
+            if(map.HasTile(position))
+            {
+                neighbouringTiles.Add(position);
+            }
+        }
+        return neighbouringTiles;
     }
 }

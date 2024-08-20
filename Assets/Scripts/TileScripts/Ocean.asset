@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a42edb15246698533ad163606484c80e, type: 3}
-  m_Name: GroundTileData
+  m_Name: Ocean
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 7db81be6b3e92b6468cade2066e85d3f, type: 2}
-  movementSpeed: 5
-  herbivoreFood: 0
-  carnivoreFood: 0
+  - {fileID: 11400000, guid: a0936824af5995946a0c0e1a862b1fb6, type: 2}
+  movementSpeed: 0
+  food: 0
   water: 0
