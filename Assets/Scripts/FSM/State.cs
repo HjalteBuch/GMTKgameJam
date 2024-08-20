@@ -18,16 +18,13 @@ public abstract class State
     }
 
     public void OnUpdateState() {
-        if (status.feedingStrategy == FeedingStrategy.predetor) {
+        if (status.feedingStrategy == FeedingStrategy.grazer) {
             Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(status.transform.position, (float)status.visionRange);
-
             foreach (Collider2D collider in objectsInRange) {
                 Status objectStatus = collider.gameObject.GetComponent<Status>();
                 if (objectStatus != null) {
-                    Debug.Log(objectStatus.prey);
-                    if (status.prey.Contains(objectStatus.animal)) {
-                        status.activePrey = objectStatus;
-                        sc.ChangeState(new Chase());
+                    if (objectStatus.prey.Contains(status.animal)) {
+                        sc.ChangeState(new Flee());
                     }
                 }
             }
