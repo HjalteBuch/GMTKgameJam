@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,22 +49,30 @@ public class MapManager : MonoBehaviour
         return dataFromTiles[tile];
     }
 
-    public List<Vector3Int> GetPositionsWithNearbyFood(int range, Vector2 worldPosition) {
-        Vector3Int gridPosition = map.WorldToCell(worldPosition);
-        BoundsInt area = new BoundsInt(gridPosition.x-(range/2), gridPosition.y-(range/2), 0, range, range, 1);
+    public bool IsCurrentTileFood(Vector3 pos) {
+        Vector3Int pos3Int = map.WorldToCell(pos);
+        return dataFromTiles[map.GetTile(pos3Int)].food;
+    }
 
-        List<Vector3Int> positionsWithFood = new List<Vector3Int>();
-        foreach (var point in area.allPositionsWithin) {
-            if (dataFromTiles[map.GetTile(point)].Food) {
-                positionsWithFood.Add(point);
+    public bool IsCurrentTileWater(Vector3 pos) {
+        Vector3Int pos3Int = map.WorldToCell(pos);
+        return dataFromTiles[map.GetTile(pos3Int)].water;
+    }
+
+    public Vector3 GetClosestTile(int range, Vector2 worldPosition, Predicate<TileData> predicate) {
+        Vector3Int pointA = map.WorldToCell(worldPosition);
+        BoundsInt area = new BoundsInt(pointA.x-(range/2), pointA.y-(range/2), 0, range, range, 1);
+
+        Vector3 closestPoint = Vector3.zero;
+        float shortestDistance = float.MaxValue;
+        foreach (var pointB in area.allPositionsWithin) {
+            if (predicate(dataFromTiles[map.GetTile(pointB)])) {
+                if(Vector3.Distance(pointA, pointB) < shortestDistance) {
+                    closestPoint = pointB;
+                }
             }
         }
 
-        return positionsWithFood;
-    }
-
-    public bool IsCurrentTileFood(Vector3 pos) {
-        Vector3Int pos3Int = map.WorldToCell(pos);
-        return dataFromTiles[map.GetTile(pos3Int)].Food;
+        return closestPoint;
     }
 }

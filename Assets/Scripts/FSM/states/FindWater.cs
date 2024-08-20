@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindFood : State
+public class FindWater : State
 {
     protected override void OnEnter() {
         status.objective = "Finding food";
-        Vector3 food = mm.GetClosestTile(status.visionRange, status.transform.position, tile => tile.food);
-        if (food == Vector3.zero) {
+        Vector3 water = mm.GetClosestTile(status.visionRange, status.transform.position, tile => tile.water);
+        if (water == Vector3.zero) {
             // State should be changed to Roam, but Roam not implemented yet
             sc.ChangeState(new Chill());
             return;
-        } else {
-
-            status.targetPos = food;
-            status.SetAnimation("walking");
         }
+
+        status.targetPos = water;
+        status.SetAnimation("walking");
     }
 
     public override void UpdateState() {
         Walk();
         if (Vector3.Distance(status.transform.position, status.targetPos) < 0.2f) {
-            sc.ChangeState(new Eat());
+            sc.ChangeState(new Drink());
         }
     }
 

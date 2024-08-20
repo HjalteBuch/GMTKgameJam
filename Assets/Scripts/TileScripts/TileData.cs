@@ -7,8 +7,7 @@ using UnityEngine.Tilemaps;
 public class TileData : ScriptableObject
 {
     public TileBase[] tiles;
-
     public float movementSpeed;
-    public bool Food;
+    public bool food;
     public bool water;
 }

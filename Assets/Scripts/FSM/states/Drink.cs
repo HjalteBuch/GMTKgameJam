@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Eat : State
+public class Drink : State
 {
     protected override void OnEnter() {
-        if (!mm.IsCurrentTileFood(status.transform.position)) {
-            sc.ChangeState(new FindFood());
+        if (!mm.IsCurrentTileWater(status.transform.position)) {
+            sc.ChangeState(new FindWater());
             return;
         }
-        status.objective = "Eating";
+        status.objective = "Drinking";
         status.SetAnimation("feeding");
     }
 
@@ -19,10 +19,10 @@ public class Eat : State
         time += Time.deltaTime;
         if (time > everyXSeconds) {
             time = 0.0f;
-            ReplenishHunger();
+            ReplenishThirst();
         }
 
-        if(status.hunger >= status.maxHunger) {
+        if(status.thirst >= status.maxThirst) {
             sc.ChangeState(new Chill());
         }
     }
@@ -31,7 +31,7 @@ public class Eat : State
         status.SetAnimation("idle");
     }
 
-    private void ReplenishHunger() {
-        status.hunger ++;
+    private void ReplenishThirst() {
+        status.thirst ++;
     }
 }
