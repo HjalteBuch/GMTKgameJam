@@ -15,7 +15,7 @@ public class Eat : State
     private float time = 0.0f;
     private float everyXSeconds = 0.2f;
 
-    public override void UpdateState() {
+    protected override void UpdateState() {
         time += Time.deltaTime;
         if (time > everyXSeconds) {
             time = 0.0f;

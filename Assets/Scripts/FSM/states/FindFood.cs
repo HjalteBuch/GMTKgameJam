@@ -19,11 +19,22 @@ public class FindFood : State
                 status.SetAnimation("walking");
                 break;
             case FeedingStrategy.predetor:
+                Collider2D[] objectsInRange = Physics2D.OverlapCircleAll(status.transform.position, (float)status.visionRange);
+
+                foreach (Collider2D collider in objectsInRange) {
+                    Status objectStatus = collider.gameObject.GetComponent<Status>();
+                    if (objectStatus != null) {
+                        if (status.prey.Contains(objectStatus.animal)) {
+                            status.activePrey = objectStatus;
+                            sc.ChangeState(new Chase());
+                        }
+                    }
+                }
                 break;
         }
     }
 
-    public override void UpdateState() {
+    protected override void UpdateState() {
         Walk();
         if (Vector3.Distance(status.transform.position, status.targetPos) < 0.2f) {
             sc.ChangeState(new Eat());
