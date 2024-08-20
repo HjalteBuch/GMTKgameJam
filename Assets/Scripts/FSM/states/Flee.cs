@@ -24,7 +24,6 @@ public class Flee : State
     }
 
     public override void OnExit() {
-        status.SetAnimation("idle");
     }
 
     private void Run() {
