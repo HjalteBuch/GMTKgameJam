@@ -15,5 +15,5 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: a0936824af5995946a0c0e1a862b1fb6, type: 2}
   movementSpeed: 0
-  Food: 0
-  water: 1
+  food: 0
+  water: 0
