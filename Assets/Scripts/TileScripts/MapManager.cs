@@ -49,7 +49,6 @@ public class MapManager : MonoBehaviour
 
     public TileData GetTileData(Vector3Int worldPosition) {
         TileBase tile = map.GetTile(worldPosition);
-
         return dataFromTiles[tile];
     }
 
@@ -114,5 +113,10 @@ public class MapManager : MonoBehaviour
             }
         }
         return neighbouringTiles;
+    }
+
+    internal void GetTileData(Vector3 position)
+    {
+        throw new NotImplementedException();
     }
 }

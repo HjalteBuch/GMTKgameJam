@@ -16,6 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f6221eb375f0634b8e087d9d28299ce, type: 2}
   movementSpeed: 0
   food: 1
-  resource: 50
+  resource: 150
   water: 0
   spreadableTo: {fileID: 11400000, guid: cd95334fcb0edca45a51fe3b03eea7be, type: 2}
